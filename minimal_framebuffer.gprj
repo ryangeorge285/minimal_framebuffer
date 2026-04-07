@@ -3,6 +3,13 @@
 <Project>
     <Template>FPGA</Template>
     <Version>5</Version>
-    <Device name="" pn="">gw1nr9c-004</Device>
-    <FileList/>
+    <Device name="GW1NR-9C" pn="GW1NR-LV9QN88PC6/I5">gw1nr9c-004</Device>
+    <FileList>
+        <File path="src/gowin_rpll_memory/gowin_rpll_memory.v" type="file.verilog" enable="1"/>
+        <File path="src/hdmi_sink.v" type="file.verilog" enable="1"/>
+        <File path="src/hdmi_tmds.v" type="file.verilog" enable="1"/>
+        <File path="src/minimal_framebuffer.v" type="file.verilog" enable="1"/>
+        <File path="src/psram_memory_interface_hs/psram_memory_interface_hs.v" type="file.verilog" enable="1"/>
+        <File path="src/constraints.cst" type="file.cst" enable="1"/>
+    </FileList>
 </Project>
