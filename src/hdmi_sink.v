@@ -11,7 +11,8 @@ module hdmi_sink (
 	output [2:0] tmds_d_n,
 	output [2:0] tmds_d_p,
     
-    output pixel_read
+    output pixel_read,
+    output vsync
 );
 
 wire [2:0] tmds_dout;
@@ -20,7 +21,8 @@ wire [2:0] tmds_d9, tmds_d8, tmds_d7, tmds_d6, tmds_d5, tmds_d4, tmds_d3, tmds_d
 reg [9:0] CounterX, CounterY;
 reg hSync, vSync, DrawArea;
 
-assign pixel_read = DrawArea;
+assign pixel_read = (CounterX<640) && (CounterY<480);
+assign vsync = vSync;
 
 always @(posedge pix_clk) DrawArea <= (CounterX<640) && (CounterY<480);
 always @(posedge pix_clk) CounterX <= (CounterX==799) ? 0 : CounterX+1;

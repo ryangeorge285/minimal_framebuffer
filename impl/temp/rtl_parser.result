@@ -1,10 +1,138 @@
 [
  {
-  "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/hdmi_tmds.v",
-  "InstLine" : 1,
-  "InstName" : "hdmi_tmds",
-  "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/hdmi_tmds.v",
-  "ModuleLine" : 1,
-  "ModuleName" : "hdmi_tmds"
+  "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
+  "InstLine" : 6,
+  "InstName" : "minimal_framebuffer",
+  "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
+  "ModuleLine" : 6,
+  "ModuleName" : "minimal_framebuffer",
+  "SubInsts" : [
+   {
+    "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
+    "InstLine" : 59,
+    "InstName" : "pll_memory",
+    "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/gowin_rpll_memory/gowin_rpll_memory.v",
+    "ModuleLine" : 10,
+    "ModuleName" : "Gowin_rPLL_memory"
+   },
+   {
+    "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
+    "InstLine" : 66,
+    "InstName" : "memory",
+    "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/psram_memory_interface_hs/psram_memory_interface_hs.v",
+    "ModuleLine" : 6711,
+    "ModuleName" : "PSRAM_Memory_Interface_HS_Top",
+    "SubInsts" : [
+     {
+      "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/psram_memory_interface_hs/psram_memory_interface_hs.v",
+      "InstLine" : 6822,
+      "InstName" : "u_psram_sync",
+      "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/psram_memory_interface_hs/psram_memory_interface_hs.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "~psram_sync.PSRAM_Memory_Interface_HS_Top"
+     },
+     {
+      "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/psram_memory_interface_hs/psram_memory_interface_hs.v",
+      "InstLine" : 6833,
+      "InstName" : "u_psram_top0",
+      "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/psram_memory_interface_hs/psram_memory_interface_hs.v",
+      "ModuleLine" : 321,
+      "ModuleName" : "~psram_memory_interface.PSRAM_Memory_Interface_HS_Top"
+     },
+     {
+      "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/psram_memory_interface_hs/psram_memory_interface_hs.v",
+      "InstLine" : 6855,
+      "InstName" : "u_psram_top1",
+      "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/psram_memory_interface_hs/psram_memory_interface_hs.v",
+      "ModuleLine" : 3526,
+      "ModuleName" : "~psram_memory_interface.PSRAM_Memory_Interface_HS_Top_0"
+     }
+    ]
+   },
+   {
+    "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
+    "InstLine" : 104,
+    "InstName" : "clk_pll",
+    "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/gowin_rpll_480p/gowin_rpll_480p.v",
+    "ModuleLine" : 10,
+    "ModuleName" : "Gowin_rPLL_480p"
+   },
+   {
+    "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
+    "InstLine" : 110,
+    "InstName" : "clk_div",
+    "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/gowin_clkdiv/gowin_clkdiv.v",
+    "ModuleLine" : 10,
+    "ModuleName" : "Gowin_CLKDIV"
+   },
+   {
+    "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
+    "InstLine" : 117,
+    "InstName" : "top_u_hdmi",
+    "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/hdmi_sink.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "hdmi_sink",
+    "SubInsts" : [
+     {
+      "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/hdmi_sink.v",
+      "InstLine" : 42,
+      "InstName" : "channel0",
+      "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/hdmi_tmds.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "hdmi_tmds"
+     },
+     {
+      "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/hdmi_sink.v",
+      "InstLine" : 51,
+      "InstName" : "channel1",
+      "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/hdmi_tmds.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "hdmi_tmds"
+     },
+     {
+      "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/hdmi_sink.v",
+      "InstLine" : 60,
+      "InstName" : "channel2",
+      "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/hdmi_tmds.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "hdmi_tmds"
+     }
+    ]
+   },
+   {
+    "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
+    "InstLine" : 140,
+    "InstName" : "fifo_read",
+    "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/fifo_hs_read/fifo_hs_read.v",
+    "ModuleLine" : 1473,
+    "ModuleName" : "FIFO_HS_Top_Read",
+    "SubInsts" : [
+     {
+      "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/fifo_hs_read/fifo_hs_read.v",
+      "InstLine" : 1498,
+      "InstName" : "fifo_inst",
+      "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/fifo_hs_read/fifo_hs_read.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "~fifo.FIFO_HS_Top_Read"
+     }
+    ]
+   },
+   {
+    "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
+    "InstLine" : 154,
+    "InstName" : "video_pl_almost_empty",
+    "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/cdc.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "cdc"
+   },
+   {
+    "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
+    "InstLine" : 167,
+    "InstName" : "button_handler",
+    "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/debouncer.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "debouncer"
+   }
+  ]
  }
 ]

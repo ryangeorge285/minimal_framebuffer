@@ -1,0 +1,68 @@
+GowinSynthesis start
+Running parser ...
+Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v'
+Undeclared symbol 'memory_clk', assumed default net type 'wire'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":60)
+Undeclared symbol 'pixel_read', assumed default net type 'wire'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":132)
+Undeclared symbol 'vsync', assumed default net type 'wire'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":133)
+Undeclared symbol 'fifo_read_empty', assumed default net type 'wire'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":145)
+Undeclared symbol 'Full', assumed default net type 'wire'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":149)
+Undeclared symbol 'switch_buffer', assumed default net type 'wire'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":171)
+Undeclared symbol 'c', assumed default net type 'wire'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":194)
+Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\hdmi_sink.v'
+Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\hdmi_tmds.v'
+Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\gowin_rpll_memory\gowin_rpll_memory.v'
+Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\psram_memory_interface_hs\psram_memory_interface_hs.v'
+Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\gowin_rpll_480p\gowin_rpll_480p.v'
+Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\gowin_clkdiv\gowin_clkdiv.v'
+Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\fifo_hs_read\fifo_hs_read.v'
+Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\cdc.v'
+Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\debouncer.v'
+WARN  (EX3073) : Port 'Almost_Full' remains unconnected for this instance("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":150)
+Compiling module 'minimal_framebuffer'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":6)
+Compiling module 'Gowin_rPLL_memory'("Z:\Documents\Code\minimal_framebuffer\src\gowin_rpll_memory\gowin_rpll_memory.v":10)
+Compiling module 'PSRAM_Memory_Interface_HS_Top'("Z:\Documents\Code\minimal_framebuffer\src\psram_memory_interface_hs\psram_memory_interface_hs.v":6711)
+Compiling module '**'("Z:\Documents\Code\minimal_framebuffer\src\psram_memory_interface_hs\psram_memory_interface_hs.v":320)
+Compiling module '**'("Z:\Documents\Code\minimal_framebuffer\src\psram_memory_interface_hs\psram_memory_interface_hs.v":3525)
+Compiling module '**'("Z:\Documents\Code\minimal_framebuffer\src\psram_memory_interface_hs\psram_memory_interface_hs.v":6710)
+WARN  (EX3670) : Actual bit length 33 differs from formal bit length 32 for port 'wr_data0'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":87)
+WARN  (EX3670) : Actual bit length 33 differs from formal bit length 32 for port 'rd_data0'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":88)
+WARN  (EX3670) : Actual bit length 8 differs from formal bit length 4 for port 'data_mask0'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":90)
+WARN  (EX3670) : Actual bit length 33 differs from formal bit length 32 for port 'wr_data1'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":97)
+WARN  (EX3670) : Actual bit length 33 differs from formal bit length 32 for port 'rd_data1'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":98)
+WARN  (EX3670) : Actual bit length 8 differs from formal bit length 4 for port 'data_mask1'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":100)
+Compiling module 'Gowin_rPLL_480p'("Z:\Documents\Code\minimal_framebuffer\src\gowin_rpll_480p\gowin_rpll_480p.v":10)
+Compiling module 'Gowin_CLKDIV'("Z:\Documents\Code\minimal_framebuffer\src\gowin_clkdiv\gowin_clkdiv.v":10)
+Compiling module 'hdmi_sink'("Z:\Documents\Code\minimal_framebuffer\src\hdmi_sink.v":1)
+WARN  (EX3791) : Expression size 11 truncated to fit in target size 10("Z:\Documents\Code\minimal_framebuffer\src\hdmi_sink.v":28)
+WARN  (EX3791) : Expression size 11 truncated to fit in target size 10("Z:\Documents\Code\minimal_framebuffer\src\hdmi_sink.v":29)
+Compiling module 'hdmi_tmds'("Z:\Documents\Code\minimal_framebuffer\src\hdmi_tmds.v":1)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 5("Z:\Documents\Code\minimal_framebuffer\src\hdmi_tmds.v":30)
+WARN  (EX3791) : Expression size 33 truncated to fit in target size 32("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":137)
+Compiling module 'FIFO_HS_Top_Read'("Z:\Documents\Code\minimal_framebuffer\src\fifo_hs_read\fifo_hs_read.v":1473)
+Compiling module '**'("Z:\Documents\Code\minimal_framebuffer\src\fifo_hs_read\fifo_hs_read.v":1472)
+Compiling module 'cdc'("Z:\Documents\Code\minimal_framebuffer\src\cdc.v":1)
+Compiling module 'debouncer'("Z:\Documents\Code\minimal_framebuffer\src\debouncer.v":1)
+WARN  (EX3791) : Expression size 22 truncated to fit in target size 21("Z:\Documents\Code\minimal_framebuffer\src\debouncer.v":38)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 21("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":196)
+WARN  (EX3791) : Expression size 17 truncated to fit in target size 16("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":232)
+WARN  (EX3791) : Expression size 17 truncated to fit in target size 16("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":248)
+NOTE  (EX0101) : Current top module is "minimal_framebuffer"
+[5%] Running netlist conversion ...
+Running device independent optimization ...
+[10%] Optimizing Phase 0 completed
+[15%] Optimizing Phase 1 completed
+[25%] Optimizing Phase 2 completed
+Running inference ...
+[30%] Inferring Phase 0 completed
+[40%] Inferring Phase 1 completed
+[50%] Inferring Phase 2 completed
+[55%] Inferring Phase 3 completed
+Running technical mapping ...
+[60%] Tech-Mapping Phase 0 completed
+[65%] Tech-Mapping Phase 1 completed
+[75%] Tech-Mapping Phase 2 completed
+[80%] Tech-Mapping Phase 3 completed
+[90%] Tech-Mapping Phase 4 completed
+[95%] Generate netlist file "Z:\Documents\Code\minimal_framebuffer\impl\gwsynthesis\minimal_framebuffer.vg" completed
+[100%] Generate report file "Z:\Documents\Code\minimal_framebuffer\impl\gwsynthesis\minimal_framebuffer_syn.rpt.html" completed
+GowinSynthesis finish

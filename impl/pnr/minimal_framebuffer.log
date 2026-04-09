@@ -1,0 +1,31 @@
+Reading netlist file: "Z:\Documents\Code\minimal_framebuffer\impl\gwsynthesis\minimal_framebuffer.vg"
+Parsing netlist file "Z:\Documents\Code\minimal_framebuffer\impl\gwsynthesis\minimal_framebuffer.vg" completed
+Processing netlist completed
+Reading constraint file: "Z:\Documents\Code\minimal_framebuffer\src\constraints.cst"
+Physical Constraint parsed completed
+Running placement......
+[10%] Placement Phase 0 completed
+[20%] Placement Phase 1 completed
+[30%] Placement Phase 2 completed
+WARN  (TA1132) :  'clk_div/clkdiv_inst/CLKOUT.default_gen_clk' was determined to be a clock but was not created.
+WARN  (TA1132) :  'memory/clkdiv/CLKOUT.default_gen_clk' was determined to be a clock but was not created.
+[50%] Placement Phase 3 completed
+Running routing......
+[60%] Routing Phase 0 completed
+[70%] Routing Phase 1 completed
+[80%] Routing Phase 2 completed
+[90%] Routing Phase 3 completed
+Running timing analysis......
+[95%] Timing analysis completed
+Placement and routing completed
+Bitstream generation in progress......
+Bitstream generation completed
+Running power analysis......
+[100%] Power analysis completed
+Generate file "Z:\Documents\Code\minimal_framebuffer\impl\pnr\minimal_framebuffer.power.html" completed
+Generate file "Z:\Documents\Code\minimal_framebuffer\impl\pnr\minimal_framebuffer.pin.html" completed
+Generate file "Z:\Documents\Code\minimal_framebuffer\impl\pnr\minimal_framebuffer.rpt.html" completed
+Generate file "Z:\Documents\Code\minimal_framebuffer\impl\pnr\minimal_framebuffer.rpt.txt" completed
+Generate file "Z:\Documents\Code\minimal_framebuffer\impl\pnr\minimal_framebuffer.tr.html" completed
+Thu Apr  9 23:21:54 2026
+
