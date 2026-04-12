@@ -2,7 +2,27 @@
  "Device" : "GW1NR-9C",
  "Files" : [
   {
-   "Path" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
+   "Path" : "Z:/Documents/Code/minimal_framebuffer/src/cdc.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "Z:/Documents/Code/minimal_framebuffer/src/debouncer.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "Z:/Documents/Code/minimal_framebuffer/src/fifo_hs_read/fifo_hs_read.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "Z:/Documents/Code/minimal_framebuffer/src/gowin_clkdiv/gowin_clkdiv.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "Z:/Documents/Code/minimal_framebuffer/src/gowin_rpll_480p/gowin_rpll_480p.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "Z:/Documents/Code/minimal_framebuffer/src/gowin_rpll_memory/gowin_rpll_memory.v",
    "Type" : "verilog"
   },
   {
@@ -14,31 +34,15 @@
    "Type" : "verilog"
   },
   {
-   "Path" : "Z:/Documents/Code/minimal_framebuffer/src/gowin_rpll_memory/gowin_rpll_memory.v",
+   "Path" : "Z:/Documents/Code/minimal_framebuffer/src/input_handler.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
    "Type" : "verilog"
   },
   {
    "Path" : "Z:/Documents/Code/minimal_framebuffer/src/psram_memory_interface_hs/psram_memory_interface_hs.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "Z:/Documents/Code/minimal_framebuffer/src/gowin_rpll_480p/gowin_rpll_480p.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "Z:/Documents/Code/minimal_framebuffer/src/gowin_clkdiv/gowin_clkdiv.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "Z:/Documents/Code/minimal_framebuffer/src/fifo_hs_read/fifo_hs_read.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "Z:/Documents/Code/minimal_framebuffer/src/cdc.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "Z:/Documents/Code/minimal_framebuffer/src/debouncer.v",
    "Type" : "verilog"
   }
  ],

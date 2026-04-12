@@ -13,6 +13,7 @@
         <File path="src/gowin_rpll_memory/gowin_rpll_memory.v" type="file.verilog" enable="1"/>
         <File path="src/hdmi_sink.v" type="file.verilog" enable="1"/>
         <File path="src/hdmi_tmds.v" type="file.verilog" enable="1"/>
+        <File path="src/input_handler.v" type="file.verilog" enable="1"/>
         <File path="src/minimal_framebuffer.v" type="file.verilog" enable="1"/>
         <File path="src/psram_memory_interface_hs/psram_memory_interface_hs.v" type="file.verilog" enable="1"/>
         <File path="src/constraints.cst" type="file.cst" enable="1"/>

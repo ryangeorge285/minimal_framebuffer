@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Module name="minimal_framebuffer" Register="86" Lut="289" T_Register="1173(86)" T_Alu="168(0)" T_Lut="1812(289)" T_Bsram="20(0)">
+<Module name="minimal_framebuffer" Register="85" Lut="187" T_Register="1173(85)" T_Alu="168(0)" T_Lut="1737(187)" T_Bsram="20(0)">
  <SubModule name="pll_memory"/>
  <SubModule name="memory" Register="862" Alu="60" Lut="1155" Bsram="4" T_Register="862(862)" T_Alu="60(60)" T_Lut="1155(1155)" T_Bsram="4(4)"/>
  <SubModule name="clk_pll"/>
  <SubModule name="clk_div"/>
- <SubModule name="top_u_hdmi" Register="23" Alu="18" Lut="18" T_Register="66(23)" T_Alu="81(18)" T_Lut="162(18)">
-  <SubModule name="channel0" Register="15" Alu="21" Lut="58" T_Register="15(15)" T_Alu="21(21)" T_Lut="58(58)"/>
-  <SubModule name="channel1" Register="14" Alu="21" Lut="43" T_Register="14(14)" T_Alu="21(21)" T_Lut="43(43)"/>
-  <SubModule name="channel2" Register="14" Alu="21" Lut="43" T_Register="14(14)" T_Alu="21(21)" T_Lut="43(43)"/>
+ <SubModule name="top_u_hdmi" Register="23" Alu="18" Lut="18" T_Register="67(23)" T_Alu="81(18)" T_Lut="186(18)">
+  <SubModule name="channel0" Register="15" Alu="21" Lut="48" T_Register="15(15)" T_Alu="21(21)" T_Lut="48(48)"/>
+  <SubModule name="channel1" Register="15" Alu="21" Lut="75" T_Register="15(15)" T_Alu="21(21)" T_Lut="75(75)"/>
+  <SubModule name="channel2" Register="14" Alu="21" Lut="45" T_Register="14(14)" T_Alu="21(21)" T_Lut="45(45)"/>
  </SubModule>
  <SubModule name="fifo_read" Register="133" Alu="27" Lut="166" Bsram="16" T_Register="133(133)" T_Alu="27(27)" T_Lut="166(166)" T_Bsram="16(16)"/>
  <SubModule name="video_pl_almost_empty" Register="2" T_Register="2(2)"/>
- <SubModule name="button_handler" Register="24" Lut="40" T_Register="24(24)" T_Lut="40(40)"/>
+ <SubModule name="button_handler" Register="24" Lut="43" T_Register="24(24)" T_Lut="43(43)"/>
 </Module>

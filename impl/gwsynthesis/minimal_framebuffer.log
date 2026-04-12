@@ -1,22 +1,23 @@
 GowinSynthesis start
 Running parser ...
+Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\cdc.v'
+Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\debouncer.v'
+Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\fifo_hs_read\fifo_hs_read.v'
+Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\gowin_clkdiv\gowin_clkdiv.v'
+Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\gowin_rpll_480p\gowin_rpll_480p.v'
+Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\gowin_rpll_memory\gowin_rpll_memory.v'
+Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\hdmi_sink.v'
+Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\hdmi_tmds.v'
 Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v'
 Undeclared symbol 'memory_clk', assumed default net type 'wire'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":60)
 Undeclared symbol 'pixel_read', assumed default net type 'wire'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":132)
 Undeclared symbol 'vsync', assumed default net type 'wire'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":133)
 Undeclared symbol 'fifo_read_empty', assumed default net type 'wire'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":145)
 Undeclared symbol 'Full', assumed default net type 'wire'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":149)
-Undeclared symbol 'switch_buffer', assumed default net type 'wire'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":171)
-Undeclared symbol 'c', assumed default net type 'wire'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":194)
-Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\hdmi_sink.v'
-Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\hdmi_tmds.v'
-Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\gowin_rpll_memory\gowin_rpll_memory.v'
+Undeclared symbol 'switch_buffer', assumed default net type 'wire'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":173)
+Undeclared symbol 'c', assumed default net type 'wire'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":195)
 Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\psram_memory_interface_hs\psram_memory_interface_hs.v'
-Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\gowin_rpll_480p\gowin_rpll_480p.v'
-Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\gowin_clkdiv\gowin_clkdiv.v'
-Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\fifo_hs_read\fifo_hs_read.v'
-Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\cdc.v'
-Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\debouncer.v'
+Analyzing Verilog file 'Z:\Documents\Code\minimal_framebuffer\src\input_handler.v'
 WARN  (EX3073) : Port 'Almost_Full' remains unconnected for this instance("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":150)
 Compiling module 'minimal_framebuffer'("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":6)
 Compiling module 'Gowin_rPLL_memory'("Z:\Documents\Code\minimal_framebuffer\src\gowin_rpll_memory\gowin_rpll_memory.v":10)
@@ -43,10 +44,16 @@ Compiling module '**'("Z:\Documents\Code\minimal_framebuffer\src\fifo_hs_read\fi
 Compiling module 'cdc'("Z:\Documents\Code\minimal_framebuffer\src\cdc.v":1)
 Compiling module 'debouncer'("Z:\Documents\Code\minimal_framebuffer\src\debouncer.v":1)
 WARN  (EX3791) : Expression size 22 truncated to fit in target size 21("Z:\Documents\Code\minimal_framebuffer\src\debouncer.v":38)
-WARN  (EX3791) : Expression size 32 truncated to fit in target size 21("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":196)
-WARN  (EX3791) : Expression size 17 truncated to fit in target size 16("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":232)
-WARN  (EX3791) : Expression size 17 truncated to fit in target size 16("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":248)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 21("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":197)
+WARN  (EX3791) : Expression size 17 truncated to fit in target size 16("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":234)
+WARN  (EX3791) : Expression size 17 truncated to fit in target size 16("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":249)
 NOTE  (EX0101) : Current top module is "minimal_framebuffer"
+WARN  (EX0211) : The output port "led[5]" of module "minimal_framebuffer" has no driver, assigning undriven bits to Z, simulation mismatch possible("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":11)
+WARN  (EX0211) : The output port "led[4]" of module "minimal_framebuffer" has no driver, assigning undriven bits to Z, simulation mismatch possible("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":11)
+WARN  (EX0211) : The output port "led[3]" of module "minimal_framebuffer" has no driver, assigning undriven bits to Z, simulation mismatch possible("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":11)
+WARN  (EX0211) : The output port "led[2]" of module "minimal_framebuffer" has no driver, assigning undriven bits to Z, simulation mismatch possible("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":11)
+WARN  (EX0211) : The output port "led[1]" of module "minimal_framebuffer" has no driver, assigning undriven bits to Z, simulation mismatch possible("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":11)
+WARN  (EX0211) : The output port "led[0]" of module "minimal_framebuffer" has no driver, assigning undriven bits to Z, simulation mismatch possible("Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v":11)
 [5%] Running netlist conversion ...
 Running device independent optimization ...
 [10%] Optimizing Phase 0 completed

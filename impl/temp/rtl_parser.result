@@ -127,7 +127,7 @@
    },
    {
     "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
-    "InstLine" : 167,
+    "InstLine" : 169,
     "InstName" : "button_handler",
     "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/debouncer.v",
     "ModuleLine" : 1,

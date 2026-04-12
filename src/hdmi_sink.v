@@ -44,7 +44,7 @@ hdmi_tmds channel0 (
 	.reset(~resetn),
 	.de(DrawArea),
 	.ctrl({vSync,hSync}),
-	.d(green[7:0]),
+	.d(blue[7:0]),
 	.q_out({tmds_d9[0], tmds_d8[0], tmds_d7[0], tmds_d6[0], tmds_d5[0], tmds_d4[0], tmds_d3[0], tmds_d2[0], tmds_d1[0], tmds_d0[0]})
 );
 
@@ -53,7 +53,7 @@ hdmi_tmds channel1 (
 	.reset(~resetn),
 	.de(DrawArea),
 	.ctrl(2'b0),
-	.d(blue[7:0]),
+	.d(green[7:0]),
 	.q_out({tmds_d9[1], tmds_d8[1], tmds_d7[1], tmds_d6[1], tmds_d5[1], tmds_d4[1], tmds_d3[1], tmds_d2[1], tmds_d1[1], tmds_d0[1]})
 );
 
