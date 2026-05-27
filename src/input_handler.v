@@ -14,11 +14,11 @@ module input_handler(
 );
 
 reg [2:0] wr_sync;
-always @(posedge fast_clk) wr_sync <= {wr_sync[1:0], wr};
 wire wr_rising = (wr_sync[2:1] == 2'b01); 
 
 always @(posedge fast_clk) begin
     input_valid <= 1'b0;
+    wr_sync <= {wr_sync[1:0], wr};
     if(~rst_n) begin
         input_type <= 1'b0;
         input_data <= 16'b0;

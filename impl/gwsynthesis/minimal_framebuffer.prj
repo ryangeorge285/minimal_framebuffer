@@ -7,14 +7,15 @@
         <File path="Z:\Documents\Code\minimal_framebuffer\src\cdc.v" type="verilog"/>
         <File path="Z:\Documents\Code\minimal_framebuffer\src\debouncer.v" type="verilog"/>
         <File path="Z:\Documents\Code\minimal_framebuffer\src\fifo_hs_read\fifo_hs_read.v" type="verilog"/>
+        <File path="Z:\Documents\Code\minimal_framebuffer\src\fifo_hs_write\fifo_hs_write.v" type="verilog"/>
         <File path="Z:\Documents\Code\minimal_framebuffer\src\gowin_clkdiv\gowin_clkdiv.v" type="verilog"/>
         <File path="Z:\Documents\Code\minimal_framebuffer\src\gowin_rpll_480p\gowin_rpll_480p.v" type="verilog"/>
         <File path="Z:\Documents\Code\minimal_framebuffer\src\gowin_rpll_memory\gowin_rpll_memory.v" type="verilog"/>
         <File path="Z:\Documents\Code\minimal_framebuffer\src\hdmi_sink.v" type="verilog"/>
         <File path="Z:\Documents\Code\minimal_framebuffer\src\hdmi_tmds.v" type="verilog"/>
+        <File path="Z:\Documents\Code\minimal_framebuffer\src\input_handler.v" type="verilog"/>
         <File path="Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v" type="verilog"/>
         <File path="Z:\Documents\Code\minimal_framebuffer\src\psram_memory_interface_hs\psram_memory_interface_hs.v" type="verilog"/>
-        <File path="Z:\Documents\Code\minimal_framebuffer\src\input_handler.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>

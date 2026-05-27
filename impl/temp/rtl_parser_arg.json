@@ -14,6 +14,10 @@
    "Type" : "verilog"
   },
   {
+   "Path" : "Z:/Documents/Code/minimal_framebuffer/src/fifo_hs_write/fifo_hs_write.v",
+   "Type" : "verilog"
+  },
+  {
    "Path" : "Z:/Documents/Code/minimal_framebuffer/src/gowin_clkdiv/gowin_clkdiv.v",
    "Type" : "verilog"
   },

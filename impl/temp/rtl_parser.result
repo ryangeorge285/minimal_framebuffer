@@ -9,7 +9,7 @@
   "SubInsts" : [
    {
     "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
-    "InstLine" : 59,
+    "InstLine" : 64,
     "InstName" : "pll_memory",
     "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/gowin_rpll_memory/gowin_rpll_memory.v",
     "ModuleLine" : 10,
@@ -17,7 +17,7 @@
    },
    {
     "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
-    "InstLine" : 66,
+    "InstLine" : 71,
     "InstName" : "memory",
     "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/psram_memory_interface_hs/psram_memory_interface_hs.v",
     "ModuleLine" : 6711,
@@ -51,7 +51,7 @@
    },
    {
     "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
-    "InstLine" : 104,
+    "InstLine" : 109,
     "InstName" : "clk_pll",
     "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/gowin_rpll_480p/gowin_rpll_480p.v",
     "ModuleLine" : 10,
@@ -59,7 +59,7 @@
    },
    {
     "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
-    "InstLine" : 110,
+    "InstLine" : 115,
     "InstName" : "clk_div",
     "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/gowin_clkdiv/gowin_clkdiv.v",
     "ModuleLine" : 10,
@@ -67,7 +67,7 @@
    },
    {
     "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
-    "InstLine" : 117,
+    "InstLine" : 122,
     "InstName" : "top_u_hdmi",
     "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/hdmi_sink.v",
     "ModuleLine" : 1,
@@ -101,7 +101,23 @@
    },
    {
     "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
-    "InstLine" : 140,
+    "InstLine" : 142,
+    "InstName" : "input_handler0",
+    "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/input_handler.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "input_handler"
+   },
+   {
+    "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
+    "InstLine" : 157,
+    "InstName" : "button_handler",
+    "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/debouncer.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "debouncer"
+   },
+   {
+    "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
+    "InstLine" : 169,
     "InstName" : "fifo_read",
     "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/fifo_hs_read/fifo_hs_read.v",
     "ModuleLine" : 1473,
@@ -119,19 +135,29 @@
    },
    {
     "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
-    "InstLine" : 154,
+    "InstLine" : 180,
+    "InstName" : "fifo_write",
+    "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/fifo_hs_write/fifo_hs_write.v",
+    "ModuleLine" : 447512,
+    "ModuleName" : "FIFO_HS_Top_Write",
+    "SubInsts" : [
+     {
+      "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/fifo_hs_write/fifo_hs_write.v",
+      "InstLine" : 447533,
+      "InstName" : "fifo_inst",
+      "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/fifo_hs_write/fifo_hs_write.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "~fifo.FIFO_HS_Top_Write"
+     }
+    ]
+   },
+   {
+    "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
+    "InstLine" : 193,
     "InstName" : "video_pl_almost_empty",
     "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/cdc.v",
     "ModuleLine" : 1,
     "ModuleName" : "cdc"
-   },
-   {
-    "InstFile" : "Z:/Documents/Code/minimal_framebuffer/src/minimal_framebuffer.v",
-    "InstLine" : 169,
-    "InstName" : "button_handler",
-    "ModuleFile" : "Z:/Documents/Code/minimal_framebuffer/src/debouncer.v",
-    "ModuleLine" : 1,
-    "ModuleName" : "debouncer"
    }
   ]
  }

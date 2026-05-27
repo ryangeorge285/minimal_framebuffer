@@ -58,14 +58,15 @@ table.detail_table td.label { min-width: 100px; width: 8%;}
 <td>Z:\Documents\Code\minimal_framebuffer\src\cdc.v<br>
 Z:\Documents\Code\minimal_framebuffer\src\debouncer.v<br>
 Z:\Documents\Code\minimal_framebuffer\src\fifo_hs_read\fifo_hs_read.v<br>
+Z:\Documents\Code\minimal_framebuffer\src\fifo_hs_write\fifo_hs_write.v<br>
 Z:\Documents\Code\minimal_framebuffer\src\gowin_clkdiv\gowin_clkdiv.v<br>
 Z:\Documents\Code\minimal_framebuffer\src\gowin_rpll_480p\gowin_rpll_480p.v<br>
 Z:\Documents\Code\minimal_framebuffer\src\gowin_rpll_memory\gowin_rpll_memory.v<br>
 Z:\Documents\Code\minimal_framebuffer\src\hdmi_sink.v<br>
 Z:\Documents\Code\minimal_framebuffer\src\hdmi_tmds.v<br>
+Z:\Documents\Code\minimal_framebuffer\src\input_handler.v<br>
 Z:\Documents\Code\minimal_framebuffer\src\minimal_framebuffer.v<br>
 Z:\Documents\Code\minimal_framebuffer\src\psram_memory_interface_hs\psram_memory_interface_hs.v<br>
-Z:\Documents\Code\minimal_framebuffer\src\input_handler.v<br>
 </td>
 </tr>
 <tr>
@@ -90,7 +91,7 @@ Z:\Documents\Code\minimal_framebuffer\src\input_handler.v<br>
 </tr>
 <tr>
 <td class="label">Created Time</td>
-<td>Sun Apr 12 18:17:31 2026
+<td>Wed May 27 12:58:49 2026
 </td>
 </tr>
 <tr>
@@ -106,11 +107,11 @@ Z:\Documents\Code\minimal_framebuffer\src\input_handler.v<br>
 </tr>
 <tr>
 <td class="label">Synthesis Process</td>
-<td>Running parser:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0.64s, Elapsed time = 0h 0m 0.62s, Peak memory usage = 541.090MB<br/>Running netlist conversion:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s, Peak memory usage = 0MB<br/>Running device independent optimization:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 0: CPU time = 0h 0m 0.125s, Elapsed time = 0h 0m 0.115s, Peak memory usage = 541.090MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 1: CPU time = 0h 0m 0.109s, Elapsed time = 0h 0m 0.088s, Peak memory usage = 541.090MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 2: CPU time = 0h 0m 0.171s, Elapsed time = 0h 0m 0.172s, Peak memory usage = 541.090MB<br/>Running inference:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 0: CPU time = 0h 0m 0.078s, Elapsed time = 0h 0m 0.072s, Peak memory usage = 541.090MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 1: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.003s, Peak memory usage = 541.090MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 2: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.015s, Peak memory usage = 541.090MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 3: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.013s, Peak memory usage = 541.090MB<br/>Running technical mapping:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 0: CPU time = 0h 0m 0.187s, Elapsed time = 0h 0m 0.19s, Peak memory usage = 541.090MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 1: CPU time = 0h 0m 0.046s, Elapsed time = 0h 0m 0.04s, Peak memory usage = 541.090MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 2: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.017s, Peak memory usage = 541.090MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 3: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s, Peak memory usage = 541.090MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 4: CPU time = 0h 0m 0.093s, Elapsed time = 0h 0m 0.138s, Peak memory usage = 541.090MB<br/>Generate output files:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0.093s, Elapsed time = 0h 0m 0.143s, Peak memory usage = 541.090MB<br/></td>
+<td>Running parser:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 15s, Elapsed time = 0h 0m 16s, Peak memory usage = 1064.754MB<br/>Running netlist conversion:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s, Peak memory usage = 0MB<br/>Running device independent optimization:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 0: CPU time = 0h 0m 0.171s, Elapsed time = 0h 0m 0.142s, Peak memory usage = 1064.754MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 1: CPU time = 0h 0m 0.093s, Elapsed time = 0h 0m 0.096s, Peak memory usage = 1064.754MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 2: CPU time = 0h 0m 0.218s, Elapsed time = 0h 0m 0.219s, Peak memory usage = 1064.754MB<br/>Running inference:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 0: CPU time = 0h 0m 0.078s, Elapsed time = 0h 0m 0.085s, Peak memory usage = 1064.754MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 1: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.004s, Peak memory usage = 1064.754MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 2: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.018s, Peak memory usage = 1064.754MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 3: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.016s, Peak memory usage = 1064.754MB<br/>Running technical mapping:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 0: CPU time = 0h 0m 0.234s, Elapsed time = 0h 0m 0.237s, Peak memory usage = 1064.754MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 1: CPU time = 0h 0m 0.046s, Elapsed time = 0h 0m 0.049s, Peak memory usage = 1064.754MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 2: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.021s, Peak memory usage = 1064.754MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 3: CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s, Peak memory usage = 1064.754MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 4: CPU time = 0h 0m 0.234s, Elapsed time = 0h 0m 0.361s, Peak memory usage = 1064.754MB<br/>Generate output files:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0.171s, Elapsed time = 0h 0m 0.194s, Peak memory usage = 1064.754MB<br/></td>
 </tr>
 <tr>
 <td class="label">Total Time and Memory Usage</td>
-<td>CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s, Peak memory usage = 541.090MB</td>
+<td>CPU time = 0h 0m 18s, Elapsed time = 0h 0m 19s, Peak memory usage = 1064.754MB</td>
 </tr>
 </table>
 <h1><a name="resource">Resource</a></h1>
@@ -154,19 +155,23 @@ Z:\Documents\Code\minimal_framebuffer\src\input_handler.v<br>
 </tr>
 <tr>
 <td class="label"><b>Register </b></td>
-<td>1173</td>
+<td>1275</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFF</td>
-<td>133</td>
+<td>224</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFE</td>
-<td>31</td>
+<td>65</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFS</td>
 <td>1</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspDFFSE</td>
+<td>3</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFR</td>
@@ -174,11 +179,11 @@ Z:\Documents\Code\minimal_framebuffer\src\input_handler.v<br>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFRE</td>
-<td>62</td>
+<td>34</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFP</td>
-<td>22</td>
+<td>24</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFPE</td>
@@ -186,43 +191,43 @@ Z:\Documents\Code\minimal_framebuffer\src\input_handler.v<br>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFC</td>
-<td>588</td>
+<td>591</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFCE</td>
-<td>316</td>
+<td>313</td>
 </tr>
 <tr>
 <td class="label"><b>LUT </b></td>
-<td>1720</td>
+<td>1904</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspLUT2</td>
-<td>440</td>
+<td>454</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspLUT3</td>
-<td>527</td>
+<td>573</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspLUT4</td>
-<td>753</td>
+<td>877</td>
 </tr>
 <tr>
 <td class="label"><b>ALU </b></td>
-<td>168</td>
+<td>179</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspALU</td>
-<td>168</td>
+<td>179</td>
 </tr>
 <tr>
 <td class="label"><b>INV </b></td>
-<td>17</td>
+<td>18</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspINV</td>
-<td>17</td>
+<td>18</td>
 </tr>
 <tr>
 <td class="label"><b>IOLOGIC </b></td>
@@ -282,13 +287,13 @@ Z:\Documents\Code\minimal_framebuffer\src\input_handler.v<br>
 </tr>
 <tr>
 <td class="label">Logic</td>
-<td>1905(1737 LUT, 168 ALU) / 8640</td>
-<td>23%</td>
+<td>2101(1922 LUT, 179 ALU) / 8640</td>
+<td>25%</td>
 </tr>
 <tr>
 <td class="label">Register</td>
-<td>1173 / 6771</td>
-<td>18%</td>
+<td>1275 / 6771</td>
+<td>19%</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp--Register as Latch</td>
@@ -297,8 +302,8 @@ Z:\Documents\Code\minimal_framebuffer\src\input_handler.v<br>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp--Register as FF</td>
-<td>1173 / 6771</td>
-<td>18%</td>
+<td>1275 / 6771</td>
+<td>19%</td>
 </tr>
 <tr>
 <td class="label">BSRAM</td>
@@ -476,16 +481,16 @@ Z:\Documents\Code\minimal_framebuffer\src\input_handler.v<br>
 <td>2</td>
 <td>clk_div/clkdiv_inst/CLKOUT.default_gen_clk</td>
 <td>25.200(MHz)</td>
-<td>43.599(MHz)</td>
-<td>13</td>
+<td>49.897(MHz)</td>
+<td>11</td>
 <td>TOP</td>
 </tr>
 <tr>
 <td>3</td>
 <td>memory/clkdiv/CLKOUT.default_gen_clk</td>
 <td>74.250(MHz)</td>
-<td>70.895(MHz)</td>
-<td>7</td>
+<td>70.845(MHz)</td>
+<td>8</td>
 <td>TOP</td>
 </tr>
 </table>
@@ -644,7 +649,7 @@ Z:\Documents\Code\minimal_framebuffer\src\input_handler.v<br>
 <td>0.727</td>
 <td>tCL</td>
 <td>RR</td>
-<td>1046</td>
+<td>1148</td>
 <td>memory/clkdiv/CLKOUT</td>
 </tr>
 <tr>
@@ -848,7 +853,7 @@ Z:\Documents\Code\minimal_framebuffer\src\input_handler.v<br>
 <td>0.727</td>
 <td>tCL</td>
 <td>RR</td>
-<td>1046</td>
+<td>1148</td>
 <td>memory/clkdiv/CLKOUT</td>
 </tr>
 <tr>
@@ -1052,7 +1057,7 @@ Z:\Documents\Code\minimal_framebuffer\src\input_handler.v<br>
 <td>0.727</td>
 <td>tCL</td>
 <td>RR</td>
-<td>1046</td>
+<td>1148</td>
 <td>memory/clkdiv/CLKOUT</td>
 </tr>
 <tr>
@@ -1256,7 +1261,7 @@ Z:\Documents\Code\minimal_framebuffer\src\input_handler.v<br>
 <td>0.727</td>
 <td>tCL</td>
 <td>RR</td>
-<td>1046</td>
+<td>1148</td>
 <td>memory/clkdiv/CLKOUT</td>
 </tr>
 <tr>
@@ -1460,7 +1465,7 @@ Z:\Documents\Code\minimal_framebuffer\src\input_handler.v<br>
 <td>0.727</td>
 <td>tCL</td>
 <td>RR</td>
-<td>1046</td>
+<td>1148</td>
 <td>memory/clkdiv/CLKOUT</td>
 </tr>
 <tr>

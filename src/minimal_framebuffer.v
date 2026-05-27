@@ -46,7 +46,12 @@ wire pix_clk;
 wire tmds_clk;
 wire video_pll_lock;
 
+wire [15:0] input_data;
+wire input_valid;
 wire [15:0] pixel;
+
+reg read_pixel;
+wire [15:0] pixel_write;
 
 reg frame_aligned;
        
@@ -133,6 +138,30 @@ hdmi_sink top_u_hdmi (
     .vsync(vsync)
 );
 
+//*****************************PERIPH HANDLER******************************************
+input_handler input_handler0(
+    .fast_clk(clk),
+    .wr(uc_wr),
+    .rst_n(sys_resetn),
+
+    .dc(uc_dc),
+    .cs(uc_cs),
+
+    .uc_data(uc_data),
+    
+    .input_type(input_type),
+    .input_data(input_data),
+    .input_valid(input_valid)
+);
+
+debouncer button_handler(
+    .clk(clk),
+    .rst_n(sys_resetn),
+    .button_in(~button),
+    .button_out(switch_buffer)
+);
+
+
 //*****************************FIFO******************************************
 wire [31:0] fifo_wr_data = read_buffer ? rd_data[1] : rd_data[0];
 wire fifo_wr_en = read_buffer ? rd_data_valid[1] : rd_data_valid[0];
@@ -145,9 +174,19 @@ FIFO_HS_Top_Read fifo_read(
 		.RdEn(~fifo_read_empty & pixel_read  & frame_aligned), //input RdEn
 		.Almost_Empty(videoclk_fifo_read_almost_empty), //output Almost_Empty
 		.Q(pixel), //output [15:0] Q
-		.Empty(fifo_read_empty), //output Empty
-		.Full(Full) //output Full
+		.Empty(fifo_read_empty) //output Empty
 	);
+
+FIFO_HS_Top_Write fifo_write(
+		.Data(16'hf81e), //input [15:0] Data
+		.WrClk(clk), //input WrClk
+		.RdClk(clk), //input RdClk
+		.WrEn(1'b1), //input WrEn
+		.RdEn(read_pixel), //input RdEn
+		.Q(pixel_write), //output [31:0] Q
+		.Empty(fifo_write_empty) //output Empty
+	);
+
 
 //*****************************CDC******************************************
 
@@ -166,15 +205,6 @@ wire write_buffer;
 reg read_buffer;
 assign write_buffer = ~read_buffer;
 
-debouncer button_handler(
-    .clk(clk),
-    .rst_n(sys_resetn),
-    .button_in(~button),
-    .button_out(switch_buffer)
-);
-
-
-
 always @(posedge pix_clk) begin
     if(~sys_resetn)
         frame_aligned <= 0;
@@ -186,18 +216,21 @@ end
 
 // Inside your write state block:
 
-reg [15:0] fb_burst_index;
+reg [15:0] fb_read_burst_index;
+reg [15:0] fb_write_burst_index;
 
-reg [31:0] cycle;     // 14 cycles between write and read
+reg [31:0] read_cycle;    
+reg [31:0] write_cycle; 
+
 reg [5:0] read_count;
 
 wire [20:0] row;
 wire [20:0] col;
 
-assign c = cycle < 32;
+assign c = read_cycle < 32;
 
-assign row = ((fb_burst_index<<5)+(c?cycle:0))/(320); 
-assign col = ((fb_burst_index<<5)+(c?cycle:0))%(320); 
+assign row = ((fb_read_burst_index<<5)+(c?read_cycle:0))/(320); 
+assign col = ((fb_read_burst_index<<5)+(c?read_cycle:0))%(320); 
 
 reg buffer_init;
 
@@ -205,24 +238,26 @@ reg buffer_init;
 
 always @(posedge clk) begin
     if (!sys_resetn) begin
-        cycle <= 8'b0;
+        read_cycle <= 8'b0;
+        write_cycle <= 8'b0;
         cmd_en <= 2'b00;
-        fb_burst_index <= 0;
+        fb_read_burst_index <= 0;
+        fb_write_burst_index <= 0;
         read_buffer <= 0;
         buffer_init <= 1'b0;
-    end else if (!buffer_init) begin
+    end else if (~buffer_init) begin
         if (&init_calib) begin
-            if(fb_burst_index < FB_BURST_COUNT) begin
+            if(fb_write_burst_index < FB_BURST_COUNT) begin
                 wr_data[0] <= 32'h00000000;
-                wr_data[1] <= 32'h00000000;
+                wr_data[1] <= 32'hffffffff;
 
-                if (cycle == 0) begin
-                    addr[0] <= fb_burst_index << 6;
+                if (write_cycle == 0) begin
+                    addr[0] <= fb_write_burst_index << 6;
                     data_mask[0] <= 8'h00;
                     cmd[0] <= 1'b1;
                     cmd_en[0] <= 1'b1;
 
-                    addr[1] <= fb_burst_index << 6;
+                    addr[1] <= fb_write_burst_index << 6;
                     data_mask[1] <= 8'h00;
                     cmd[1] <= 1'b1;
                     cmd_en[1] <= 1'b1;
@@ -231,31 +266,31 @@ always @(posedge clk) begin
                     cmd_en[1] <= 1'b0;
                 end
 
-                if (cycle == 50) begin
-                    cycle <= 0;
-                    fb_burst_index <= fb_burst_index + 1;
+                if (write_cycle == 50) begin
+                    write_cycle <= 0;
+                    fb_write_burst_index <= fb_write_burst_index + 1;
                 end else begin
-                    cycle <= cycle + 1;
+                    write_cycle <= write_cycle + 1;
                 end
             end else begin
                 buffer_init <= 1'b1;
-                cycle <= 0;
+                write_cycle <= 0;
             end
         end
     end else begin
-        if(fb_burst_index < FB_BURST_COUNT) begin
-            if(cycle > 100) begin
+        if(fb_read_burst_index < FB_BURST_COUNT) begin
+            if(read_cycle > 100) begin
                 if(plclk_fifo_read_almost_empty)
                 begin 
-                    cycle <= 0;
-                    fb_burst_index <= fb_burst_index + 1;
+                    read_cycle <= 0;
+                    fb_read_burst_index <= fb_read_burst_index + 1;
                 end
             end else   
-                cycle <= cycle + 1;
+                read_cycle <= read_cycle + 1;
        
 
-            if (cycle == 0) begin
-                addr[read_buffer] <= fb_burst_index << 6;
+            if (read_cycle == 0) begin
+                addr[read_buffer] <= fb_read_burst_index << 6;
                 cmd[read_buffer] <= 1'b0;
                 cmd_en[read_buffer] <= 1'b1;
                 data_mask[read_buffer] <= 8'h00;
@@ -263,12 +298,42 @@ always @(posedge clk) begin
                 cmd_en[read_buffer] <= 1'b0;
             end
         end else begin
+            fb_read_burst_index <= 0;
+            read_cycle <= 0;
             if(switch_buffer)
                 read_buffer <= ~read_buffer;
-            fb_burst_index <= 0;
-            cycle <= 0;
+        end
+    end
+    
+    if(buffer_init && ~fifo_write_empty) begin
+        if(fb_write_burst_index < FB_BURST_COUNT) begin
+            wr_data[write_buffer] <= 32'hf81ef81e;
+
+            if (write_cycle == 0) begin
+                addr[write_buffer] <= fb_write_burst_index << 6;
+                data_mask[write_buffer] <= 8'h00;
+                cmd[write_buffer] <= 1'b1;
+                cmd_en[write_buffer] <= 1'b1;
+                read_pixel <= 1'b1;
+            end else begin
+                cmd_en[write_buffer] <= 1'b0;
+            end
+            if (write_cycle == 31) 
+                read_pixel <= 1'b0;
+
+            if (write_cycle == 50) begin
+                write_cycle <= 0;
+                fb_write_burst_index <= fb_write_burst_index + 1;
+            end else begin
+                write_cycle <= write_cycle + 1;
+            end
+        end else begin
+            write_cycle <= 0;
+            fb_write_burst_index <= 0;
         end
     end
 end
+
+
 
 endmodule

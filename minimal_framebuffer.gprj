@@ -8,6 +8,7 @@
         <File path="src/cdc.v" type="file.verilog" enable="1"/>
         <File path="src/debouncer.v" type="file.verilog" enable="1"/>
         <File path="src/fifo_hs_read/fifo_hs_read.v" type="file.verilog" enable="1"/>
+        <File path="src/fifo_hs_write/fifo_hs_write.v" type="file.verilog" enable="1"/>
         <File path="src/gowin_clkdiv/gowin_clkdiv.v" type="file.verilog" enable="1"/>
         <File path="src/gowin_rpll_480p/gowin_rpll_480p.v" type="file.verilog" enable="1"/>
         <File path="src/gowin_rpll_memory/gowin_rpll_memory.v" type="file.verilog" enable="1"/>
