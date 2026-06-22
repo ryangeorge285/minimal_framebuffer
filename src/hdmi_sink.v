@@ -31,13 +31,15 @@ always @(posedge pix_clk) if(CounterX==799) CounterY <= (CounterY==524) ? 0 : Co
 always @(posedge pix_clk) hSync <= (CounterX>=656) && (CounterX<752);
 always @(posedge pix_clk) vSync <= (CounterY>=490) && (CounterY<492);
 
-wire [7:0] red;
-wire [7:0] green;
-wire [7:0] blue;
+reg [7:0] red;
+reg [7:0] green;
+reg [7:0] blue;
 
-assign red   = {pixel[15:11], 3'b0};
-assign green = {pixel[10:5], 2'b0};
-assign blue  = {pixel[4:0], 3'b0};
+always @(posedge pix_clk) begin
+    red   <= {pixel[15:11], 3'b0};
+    green <= {pixel[10:5], 2'b0};
+    blue  <= {pixel[4:0], 3'b0};
+end
 
 hdmi_tmds channel0 (
     .clk(pix_clk),

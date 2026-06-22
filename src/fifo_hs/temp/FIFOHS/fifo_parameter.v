@@ -4,5 +4,4 @@ parameter WDSIZE = 16;
 parameter RDEPTH = 512;
 parameter RASIZE = 9;
 parameter RDSIZE = 32;
-parameter AssertEmptyTh = 32;
-parameter DeassertEmptyTh = 33;
+parameter AFULL = 32;

@@ -8,7 +8,7 @@ module minimal_framebuffer (
     input sys_resetn,
     input button,   
 
-    output reg [5:0] led,
+    output [5:0] led,
 
     output [CS_WIDTH-1:0] O_psram_ck,      
     output [CS_WIDTH-1:0] O_psram_ck_n,
@@ -51,7 +51,17 @@ wire input_valid;
 wire [15:0] pixel;
 
 reg read_pixel;
-wire [15:0] pixel_write;
+wire [31:0] pixel_write;
+
+reg fifo_write_reset;
+reg draining;
+reg [3:0] flush_state;
+
+reg fifo_read_reset;
+reg [5:0] read_flush_state;
+reg vsync_clk_prev;
+wire vsync_clk;
+wire read_flushing = (read_flush_state != 6'd0);
 
 reg frame_aligned;
        
@@ -138,20 +148,33 @@ hdmi_sink top_u_hdmi (
     .vsync(vsync)
 );
 
+//*****************************TEST PATTERN DRIVER**************************************
+wire [15:0] uc_data;
+wire uc_wr;
+wire uc_cs;
+
+test_pattern_driver test_driver(
+    .clk(clk),
+    .rst_n(sys_resetn),
+    .enable(buffer_init),
+    .uc_data(uc_data),
+    .uc_wr(uc_wr),
+    .uc_cs(uc_cs),
+    .uc_dc()
+);
+
 //*****************************PERIPH HANDLER******************************************
 input_handler input_handler0(
     .fast_clk(clk),
     .wr(uc_wr),
     .rst_n(sys_resetn),
 
-    .dc(uc_dc),
     .cs(uc_cs),
-
     .uc_data(uc_data),
-    
-    .input_type(input_type),
+
     .input_data(input_data),
-    .input_valid(input_valid)
+    .input_valid(input_valid),
+    .input_end(input_end)
 );
 
 debouncer button_handler(
@@ -164,10 +187,11 @@ debouncer button_handler(
 
 //*****************************FIFO******************************************
 wire [31:0] fifo_wr_data = read_buffer ? rd_data[1] : rd_data[0];
-wire fifo_wr_en = read_buffer ? rd_data_valid[1] : rd_data_valid[0];
+wire fifo_wr_en = (read_buffer ? rd_data_valid[1] : rd_data_valid[0]) & ~read_flushing;
 
-FIFO_HS_Top_Read fifo_read(
+FIFO_HS_Read fifo_read(
 		.Data(fifo_wr_data), //input [31:0] Data
+		.Reset(fifo_read_reset), //input Reset
 		.WrClk(clk), //input WrClk
 		.RdClk(pix_clk), //input RdClk
 		.WrEn(fifo_wr_en), //input WrEn
@@ -177,13 +201,15 @@ FIFO_HS_Top_Read fifo_read(
 		.Empty(fifo_read_empty) //output Empty
 	);
 
-FIFO_HS_Top_Write fifo_write(
-		.Data(16'hf81e), //input [15:0] Data
+FIFO_HS_WRITE fifo_write(
+		.Data(input_data), //input [15:0] Data
+        .Reset(fifo_write_reset),
 		.WrClk(clk), //input WrClk
 		.RdClk(clk), //input RdClk
-		.WrEn(1'b1), //input WrEn
+		.WrEn(input_valid), //input WrEn
 		.RdEn(read_pixel), //input RdEn
 		.Q(pixel_write), //output [31:0] Q
+        .Almost_Empty(fifo_write_burst_empty), //output Almost_Full
 		.Empty(fifo_write_empty) //output Empty
 	);
 
@@ -193,9 +219,17 @@ FIFO_HS_Top_Write fifo_write(
 cdc video_pl_almost_empty(
         .clk_dest(clk),
         .rst_n(sys_resetn),
-        
+
         .src_data(videoclk_fifo_read_almost_empty),
         .out_data(plclk_fifo_read_almost_empty)
+    );
+
+cdc vsync_to_clk(
+        .clk_dest(clk),
+        .rst_n(sys_resetn),
+
+        .src_data(vsync),
+        .out_data(vsync_clk)
     );
 
 
@@ -205,6 +239,9 @@ wire write_buffer;
 reg read_buffer;
 assign write_buffer = ~read_buffer;
 
+reg swap_pending;        
+reg switch_buffer_prev;    
+
 always @(posedge pix_clk) begin
     if(~sys_resetn)
         frame_aligned <= 0;
@@ -213,8 +250,6 @@ always @(posedge pix_clk) begin
             frame_aligned <= 1;
     end
 end
-
-// Inside your write state block:
 
 reg [15:0] fb_read_burst_index;
 reg [15:0] fb_write_burst_index;
@@ -234,6 +269,10 @@ assign col = ((fb_read_burst_index<<5)+(c?read_cycle:0))%(320);
 
 reg buffer_init;
 
+assign led[5] = read_buffer;
+assign led[4] = write_buffer;
+
+
 //wr_data[0] <= ((row == 0 && col%10==0) || (row == 479 && col%10==0)) ? 32'hffffffff : 32'h00000000;
 
 always @(posedge clk) begin
@@ -245,11 +284,19 @@ always @(posedge clk) begin
         fb_write_burst_index <= 0;
         read_buffer <= 0;
         buffer_init <= 1'b0;
+        fifo_write_reset <= 1'b0;
+        draining <= 1'b0;
+        flush_state <= 4'd0;
+        swap_pending <= 1'b0;
+        switch_buffer_prev <= 1'b0;
+        fifo_read_reset <= 1'b0;
+        read_flush_state <= 6'd0;
+        vsync_clk_prev <= 1'b0;
     end else if (~buffer_init) begin
         if (&init_calib) begin
             if(fb_write_burst_index < FB_BURST_COUNT) begin
-                wr_data[0] <= 32'h00000000;
-                wr_data[1] <= 32'hffffffff;
+                wr_data[0] <= 32'hf800f800;   // init buffer 0 = RED
+                wr_data[1] <= 32'h001f001f;   // init buffer 1 = BLUE
 
                 if (write_cycle == 0) begin
                     addr[0] <= fb_write_burst_index << 6;
@@ -289,7 +336,7 @@ always @(posedge clk) begin
                 read_cycle <= read_cycle + 1;
        
 
-            if (read_cycle == 0) begin
+            if (read_cycle == 0 && ~read_flushing) begin
                 addr[read_buffer] <= fb_read_burst_index << 6;
                 cmd[read_buffer] <= 1'b0;
                 cmd_en[read_buffer] <= 1'b1;
@@ -298,40 +345,73 @@ always @(posedge clk) begin
                 cmd_en[read_buffer] <= 1'b0;
             end
         end else begin
-            fb_read_burst_index <= 0;
-            read_cycle <= 0;
-            if(switch_buffer)
-                read_buffer <= ~read_buffer;
+            cmd_en[read_buffer] <= 1'b0;
         end
     end
-    
-    if(buffer_init && ~fifo_write_empty) begin
+
+    if(buffer_init) begin
         if(fb_write_burst_index < FB_BURST_COUNT) begin
-            wr_data[write_buffer] <= 32'hf81ef81e;
-
             if (write_cycle == 0) begin
-                addr[write_buffer] <= fb_write_burst_index << 6;
-                data_mask[write_buffer] <= 8'h00;
-                cmd[write_buffer] <= 1'b1;
-                cmd_en[write_buffer] <= 1'b1;
-                read_pixel <= 1'b1;
+                if ((draining ? ~fifo_write_empty : ~fifo_write_burst_empty) && flush_state == 4'd0) begin
+                    addr[write_buffer] <= fb_write_burst_index << 6;
+                    data_mask[write_buffer] <= 8'h00;
+                    read_pixel <= 1'b1;
+                    write_cycle <= 1;
+                end
             end else begin
-                cmd_en[write_buffer] <= 1'b0;
-            end
-            if (write_cycle == 31) 
-                read_pixel <= 1'b0;
+                wr_data[write_buffer] <= {pixel_write[15:0], pixel_write[31:16]};
+                if (write_cycle == 1) begin
+                    cmd[write_buffer] <= 1'b1;
+                    cmd_en[write_buffer] <= 1'b1;
+                end else
+                    cmd_en[write_buffer] <= 1'b0;
 
-            if (write_cycle == 50) begin
-                write_cycle <= 0;
-                fb_write_burst_index <= fb_write_burst_index + 1;
-            end else begin
-                write_cycle <= write_cycle + 1;
+                if (write_cycle == 32)
+                    read_pixel <= 1'b0;
+
+                if (write_cycle == 50) begin
+                    write_cycle <= 0;
+                    fb_write_burst_index <= fb_write_burst_index + 1;
+                end else begin
+                    write_cycle <= write_cycle + 1;
+                end
             end
         end else begin
             write_cycle <= 0;
             fb_write_burst_index <= 0;
+            draining <= 1'b0;
+            flush_state <= 4'd10;
+            if (swap_pending) begin
+                read_buffer  <= ~read_buffer;
+                swap_pending <= 1'b0;
+            end
         end
     end
+
+    if (flush_state != 4'd0)
+        flush_state <= flush_state - 4'd1;
+
+    switch_buffer_prev <= switch_buffer;
+    if (switch_buffer & ~switch_buffer_prev)
+        swap_pending <= 1'b1;
+
+    if (input_end)
+        draining <= 1'b1;
+
+    fifo_write_reset <= ~buffer_init | (flush_state > 4'd4);
+
+    vsync_clk_prev <= vsync_clk;
+    if (vsync_clk & ~vsync_clk_prev) begin
+        read_flush_state <= 6'd40;
+        fb_read_burst_index <= 0;
+        read_cycle <= 0;
+    end else if (read_flush_state != 6'd0) begin
+        read_flush_state <= read_flush_state - 6'd1;
+        fb_read_burst_index <= 0;
+        read_cycle <= 0;
+    end
+
+    fifo_read_reset <= (read_flush_state > 6'd8);
 end
 
 

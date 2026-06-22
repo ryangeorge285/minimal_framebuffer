@@ -5,17 +5,19 @@
 //Part Number: GW1NR-LV9QN88PC6/I5
 //Device: GW1NR-9
 //Device Version: C
-//Created Time: Sun Apr 12 18:31:43 2026
+//Created Time: Sat Jun 20 12:07:49 2026
 
 //Change the instance name and port connections to the signal names
 //--------Copy here to design--------
 
-	FIFO_HS_Top_Write your_instance_name(
+	FIFO_HS_WRITE your_instance_name(
 		.Data(Data), //input [15:0] Data
+		.Reset(Reset), //input Reset
 		.WrClk(WrClk), //input WrClk
 		.RdClk(RdClk), //input RdClk
 		.WrEn(WrEn), //input WrEn
 		.RdEn(RdEn), //input RdEn
+		.Almost_Empty(Almost_Empty), //output Almost_Empty
 		.Q(Q), //output [31:0] Q
 		.Empty(Empty), //output Empty
 		.Full(Full) //output Full
