@@ -3,7 +3,6 @@ module input_handler(
     input wire wr,
     input wire rst_n,
 
-    input wire cs,
 
     input wire [15:0] uc_data,
     

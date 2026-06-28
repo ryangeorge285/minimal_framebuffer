@@ -2,10 +2,6 @@ IO_LOC "sys_clk" 52;
 IO_PORT "sys_clk" IO_TYPE=LVCMOS33 PULL_MODE=UP;
 IO_LOC "sys_resetn" 4;
 IO_PORT "sys_resetn" PULL_MODE=UP;
-IO_LOC "button" 3;
-IO_PORT "button" PULL_MODE=UP;
-
-// LED
 IO_LOC "led[5]" 16;
 IO_PORT "led[5]" PULL_MODE=UP DRIVE=8;
 IO_LOC "led[4]" 15;
@@ -19,7 +15,6 @@ IO_PORT "led[1]" PULL_MODE=UP DRIVE=8;
 IO_LOC "led[0]" 10;
 IO_PORT "led[0]" PULL_MODE=UP DRIVE=8;
 
-// HDMI
 IO_LOC "tmds_d_p[0]" 71,70;
 IO_PORT "tmds_d_p[0]" PULL_MODE=NONE DRIVE=8;
 IO_LOC "tmds_d_p[1]" 73,72;
@@ -28,3 +23,41 @@ IO_LOC "tmds_d_p[2]" 75,74;
 IO_PORT "tmds_d_p[2]" PULL_MODE=NONE DRIVE=8;
 IO_LOC "tmds_clk_p" 69,68;
 IO_PORT "tmds_clk_p" PULL_MODE=NONE DRIVE=8;
+
+IO_LOC "vsync_out" 53;
+IO_PORT "vsync_out" IO_TYPE=LVCMOS33 DRIVE=8;
+
+IO_LOC "wr" 30;
+IO_PORT "wr" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "uc_data[0]" 51;
+IO_PORT "uc_data[0]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "uc_data[1]" 42;
+IO_PORT "uc_data[1]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "uc_data[2]" 41;
+IO_PORT "uc_data[2]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "uc_data[3]" 35;
+IO_PORT "uc_data[3]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "uc_data[4]" 27;
+IO_PORT "uc_data[4]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "uc_data[5]" 26;
+IO_PORT "uc_data[5]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "uc_data[6]" 25;
+IO_PORT "uc_data[6]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "uc_data[7]" 49;
+IO_PORT "uc_data[7]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "uc_data[8]" 36;
+IO_PORT "uc_data[8]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "uc_data[9]" 37;
+IO_PORT "uc_data[9]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "uc_data[10]" 38;
+IO_PORT "uc_data[10]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "uc_data[11]" 40;
+IO_PORT "uc_data[11]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "uc_data[12]" 34;
+IO_PORT "uc_data[12]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "uc_data[13]" 33;
+IO_PORT "uc_data[13]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "uc_data[14]" 28;
+IO_PORT "uc_data[14]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "uc_data[15]" 29;
+IO_PORT "uc_data[15]" IO_TYPE=LVCMOS33 PULL_MODE=UP;

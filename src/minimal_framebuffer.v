@@ -4,9 +4,13 @@
  */
 
 module minimal_framebuffer (
-    input sys_clk,  
+    input sys_clk,
     input sys_resetn,
-    input button,   
+
+    input wire wr,
+    input wire [15:0] uc_data,
+
+    output wire vsync_out,
 
     output [5:0] led,
 
@@ -148,7 +152,7 @@ hdmi_sink top_u_hdmi (
     .vsync(vsync)
 );
 
-//*****************************TEST PATTERN DRIVER**************************************
+/* ****************************TEST PATTERN DRIVER****************
 wire [15:0] uc_data;
 wire uc_wr;
 wire uc_cs;
@@ -159,29 +163,20 @@ test_pattern_driver test_driver(
     .enable(buffer_init),
     .uc_data(uc_data),
     .uc_wr(uc_wr),
-    .uc_cs(uc_cs),
     .uc_dc()
 );
+*/
 
 //*****************************PERIPH HANDLER******************************************
 input_handler input_handler0(
     .fast_clk(clk),
-    .wr(uc_wr),
+    .wr(wr),
     .rst_n(sys_resetn),
-
-    .cs(uc_cs),
     .uc_data(uc_data),
 
     .input_data(input_data),
     .input_valid(input_valid),
     .input_end(input_end)
-);
-
-debouncer button_handler(
-    .clk(clk),
-    .rst_n(sys_resetn),
-    .button_in(~button),
-    .button_out(switch_buffer)
 );
 
 
@@ -239,8 +234,8 @@ wire write_buffer;
 reg read_buffer;
 assign write_buffer = ~read_buffer;
 
-reg swap_pending;        
-reg switch_buffer_prev;    
+reg swap_pending;
+reg swap_ready;
 
 always @(posedge pix_clk) begin
     if(~sys_resetn)
@@ -272,6 +267,8 @@ reg buffer_init;
 assign led[5] = read_buffer;
 assign led[4] = write_buffer;
 
+assign vsync_out = vsync;   
+
 
 //wr_data[0] <= ((row == 0 && col%10==0) || (row == 479 && col%10==0)) ? 32'hffffffff : 32'h00000000;
 
@@ -288,7 +285,7 @@ always @(posedge clk) begin
         draining <= 1'b0;
         flush_state <= 4'd0;
         swap_pending <= 1'b0;
-        switch_buffer_prev <= 1'b0;
+        swap_ready <= 1'b0;
         fifo_read_reset <= 1'b0;
         read_flush_state <= 6'd0;
         vsync_clk_prev <= 1'b0;
@@ -382,7 +379,7 @@ always @(posedge clk) begin
             draining <= 1'b0;
             flush_state <= 4'd10;
             if (swap_pending) begin
-                read_buffer  <= ~read_buffer;
+                swap_ready   <= 1'b1;  
                 swap_pending <= 1'b0;
             end
         end
@@ -391,12 +388,10 @@ always @(posedge clk) begin
     if (flush_state != 4'd0)
         flush_state <= flush_state - 4'd1;
 
-    switch_buffer_prev <= switch_buffer;
-    if (switch_buffer & ~switch_buffer_prev)
-        swap_pending <= 1'b1;
-
-    if (input_end)
+    if (input_end) begin
         draining <= 1'b1;
+        swap_pending <= 1'b1;  
+    end
 
     fifo_write_reset <= ~buffer_init | (flush_state > 4'd4);
 
@@ -405,6 +400,10 @@ always @(posedge clk) begin
         read_flush_state <= 6'd40;
         fb_read_burst_index <= 0;
         read_cycle <= 0;
+        if (swap_ready) begin           
+            read_buffer <= ~read_buffer;
+            swap_ready  <= 1'b0;
+        end
     end else if (read_flush_state != 6'd0) begin
         read_flush_state <= read_flush_state - 6'd1;
         fb_read_burst_index <= 0;
